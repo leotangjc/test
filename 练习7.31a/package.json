@@ -5,7 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+<<<<<<< HEAD
   "author": "tjc",
+=======
+  "author": "tjc",
+>>>>>>> 97e9c221485102ce7c63234b6a41ed96b51f1ddb
   "license": "ISC",
   "dependencies": {
     "async": "^1.5.0",
