@@ -1,13 +1,5 @@
 var express = require('express');
-
 var app = express();
-var superagent = require('superagent');
-//抓取
-var cheerio = require('cheerio');
-var url = require('url');
-
-var async = require('async');
-
 app.listen(3000, function(req, res) {
   console.log('app is running at port 3000');
 });
