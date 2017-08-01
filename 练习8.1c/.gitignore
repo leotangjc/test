@@ -1,0 +1,8 @@
+
+de_modules
+.idea
+*.DS
+coverage
+npm-debug.log
+.coveralls.yml
+

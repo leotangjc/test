@@ -4,7 +4,12 @@ var app = express();
 var a =  [{name:'jack',age:22},{name:'nancy',age:23},{name:'tom',age:22}];
 
 
-
+var b = a.map(function(x) {
+  if(x.age === 22){
+    return x;
+  }
+});
+console.log(b);
 
 
 
