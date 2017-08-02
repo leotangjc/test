@@ -4,19 +4,19 @@
 var a = [
   {
     name: 'jack',
-    age: 22,
+    age: 22
   },
   {
     name: 'nancy',
-    age: 23,
+    age: 23
   },
   {
     name: 'tom',
-    age: 22,
+    age: 22
   },
   {
     name: 'jana',
-    age: 25,
+    age: 25
   }];
 
 var p = /^(ja).*$/;

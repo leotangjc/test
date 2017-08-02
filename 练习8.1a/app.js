@@ -8,3 +8,6 @@ for (i = 0; i < a.length; i++) {
 console.log(x);
 console.log(x / a.length);
 
+
+
+
