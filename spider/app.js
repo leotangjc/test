@@ -3,7 +3,7 @@ var express = require('express');
 //
 var app = express();
 var superagent = require('superagent');
-//抓取
+//引入抓取模块
 var cheerio = require('cheerio');
 var url = require('url');
 
@@ -15,14 +15,21 @@ app.listen(3000, function(req, res) {
   console.log('app is running at port 3000');
 });
 
+//设定抓取的URL
 var cnodeUrl = 'https://cnodejs.org/';
+//对默认的请求做如下操作
 app.get('/', function(req, res, next) {
+  //使用superagent来模拟访问指定URL
   superagent.get(cnodeUrl).end(function(err, sres) {
     if (err) {
       return next(err);
     }
+    //
     var $ = cheerio.load(sres.text);
+    console.log($);
     var items = [];
+    //遍历抓取到的信息
+    //.cell是什么
     $('.cell').each(function(idx, element) {
       var $element = $(element);
       var a = $element.find('span.count_of_replies').
@@ -71,7 +78,7 @@ app.get('/', function(req, res, next) {
     var min = null;
     items.forEach(function(element, index) {
       // console.log(element, index)
-      console.log(min, element.click)
+      // console.log(min, element.click)
       if (min < element.click) {
         min = element.click;
         i = index;
@@ -98,94 +105,3 @@ app.get('/', function(req, res, next) {
 
   });
 });
-//
-// app.get('/eventproxy', function(req, res, next) {
-//   superagent.get(cnodeUrl).end(function(err, res) {
-//     if (err) {
-//       return console.error(err);
-//     }
-//     var topicUrls = [];
-//     var $ = cheerio.load(res.text);
-//     //
-//     $('#topic_list .last_active_time').each(function(idx, element) {
-//       var $element = $(element);
-//
-//       topicUrls.push(href);
-//     });
-//
-//     console.log(topicUrls);
-//
-//     //------------------------------------------------------
-//
-//     //
-//     var ep = new eventproxy();
-//
-//     //
-//     ep.after('topic_html', topicUrls.length, function(topics) {
-//       topics = topics.map(function(topicPair) {
-//         //
-//         var topicUrl = topicPair[0];
-//         var topicHtml = topicPair[1];
-//         var $ = cheerio.load(topicHtml);
-//         return ({
-//           title: $('.topic_full_title').text().trim(),
-//           href: topicUrl,
-//           comment1: $('.reply_content').eq(0).text().trim(),
-//         });
-//       });
-//
-//       console.log('final:');
-//       console.log(topics);
-//     });
-//
-//     topicUrls.forEach(function(topicUrl) {
-//       superagent.get(topicUrl).end(function(err, res) {
-//         console.log('fetch ' + topicUrl + ' successful');
-//         ep.emit('topic_html', [topicUrl, res.text]);
-//       });
-//     });
-//
-//   });
-// });
-//
-// app.get('/async', function(req, res, next) {
-//   //
-//   var concurrencyCount = 0;
-//
-//   var fetchUrl = function(url, callback) {
-//     concurrencyCount++;
-//     console.log('���ڵĲ�������', concurrencyCount, '������ץȡ����', url);
-//     superagent.get(url).end(function(err, res) {
-//       console.log('fetch ' + url + ' successful');
-//       concurrencyCount++;
-//       callback(null, url);
-//     });
-//   };
-//
-//   var urls = [];
-//   superagent.get(cnodeUrl).end(function(err, res) {
-//     if (err) {
-//       return console.error(err);
-//     }
-//     var $ = cheerio.load(res.text);
-//     // ��ȡ��ҳ���е�����
-//     $('#topic_list .topic_title').each(function(idx, element) {
-//       var $element = $(element);
-//       //
-//       var href = url.resolve(cnodeUrl, $element.attr('href'));
-//       urls.push(href);
-//     });
-//
-//     //console.log(urls);
-//
-//     async.mapLimit(urls, 5, function(url, callback) {
-//       fetchUrl(url, callback);
-//     }, function(err, result) {
-//       console.log('final:');
-//       console.log(result);
-//     });
-//   });
-//
-// });
-//
-//

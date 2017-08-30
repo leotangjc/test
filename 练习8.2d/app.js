@@ -28,30 +28,49 @@
 
 
 
-let obj = {
-  a: 1,
-  b: 2,
-  c: {
-    c1: 2,
-    c2: 4,
-  },
-};
+// let obj = {
+//   a: 1,
+//   b: 2,
+//   c: {
+//     c1: 2,
+//     c2: 4,
+//   },
+// };
+//
+//
+// let index = 0;
+// let ttt = 0;
+// for (var i in obj) {
+//   if (typeof(obj[i]) === 'object') {
+//     for (let z in obj[i]) {
+//       ttt++;
+//     }
+//     console.log(obj[i]);
+//     console.log(ttt);
+//   }
+//   index++;
+// }
+//
+// console.log(index);
+//
 
 
-let index = 0;
-let ttt = 0;
-for (var i in obj) {
-  if (typeof(obj[i]) === 'object') {
-    for (let z in obj[i]) {
-      ttt++;
-    }
-    console.log(obj[i]);
-    console.log(ttt);
-  }
-  index++;
+function example() {
+  return [1, 2, 3];
 }
+let [a, b, c] = example();
+console.log(a,c);
 
-console.log(index);
 
 
-
+// function example() {
+//   return {
+//     foo: 1,
+//     bar: 2
+//   };
+// }
+// let { foo, bar } = {
+//   foo: 1,
+//   bar: 2
+// };
+// console.log(foo, bar);
