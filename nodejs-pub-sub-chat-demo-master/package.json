@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-pub-sub-chat-demo-master",
+  "version": "1.0.0",
+  "description": "<h1>Chat based on Node.js using Redis Pub/Sub + socket.io</h1> Simple application based to show Redis Pub/Sub mechanism together with Node.js and socket.io.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^2.0.3"
+  }
+}
